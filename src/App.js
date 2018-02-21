@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import loadURL from './load';
 import traversefolder from './traverseFolder';
 import ffs from 'final-fs';
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
 const { BrowserWindow, dialog } = require('electron').remote;
 
 const selectDirBtn = document.getElementById('select-directory');
@@ -20,7 +22,12 @@ const rules = [
     to: "'Store'",
   },
 ];
-
+async function execCommand(command) {
+  const obj = await exec(command);
+  console.log(obj,typeof(obj));
+  // console.log('stdout:', stdout);
+  // console.log('stderr:', stderr);
+}
 // const { COPYFILE_EXCL } = fs.constants;
 class App extends Component {
   constructor() {
@@ -36,7 +43,7 @@ class App extends Component {
       {
         properties: ['openDirectory', 'multiSelections'],
       },
-      function(res) {
+      function (res) {
         p = res[0];
         console.log(p);
         traversefolder(p)
@@ -50,7 +57,7 @@ class App extends Component {
                 } else {
                   data = data.replace(/'(.*?)axios'/g, "'Axios'");
                   data = data.replace(/'(.*?)store'/g, "'Store'");
-                  
+
                   // console.log(data);
                   fs.writeFile(one, data, err => {
                     if (err) {
@@ -100,14 +107,14 @@ class App extends Component {
     var porcentage = 0;
     const readStream = fs.createReadStream(new URL('file:///D:/a.exe'));
 
-    readStream.on('data', function(buffer) {
+    readStream.on('data', function (buffer) {
       bytesCopied += buffer.length;
       porcentage = (bytesCopied / filesize * 100).toFixed(2);
       //console.log(porcentage + "%"); // run once with this and later with this line commented
     });
     readStream.on(
       'end',
-      function() {
+      function () {
         console.timeEnd('copying');
         console.log('copyend');
         clearInterval(this._timer);
@@ -116,7 +123,7 @@ class App extends Component {
     );
 
     this._timer = setInterval(
-      function() {
+      function () {
         this._update(porcentage);
       }.bind(this),
       300,
@@ -137,13 +144,18 @@ class App extends Component {
     // let win = new BrowserWindow({ frame: false });
     let win = new BrowserWindow();
 
-    win.on('close', function() {
+    win.on('close', function () {
       win = null;
     });
 
     loadURL(win, 'p');
     win.show();
     //window.open("http://www.baidu.com")
+  }
+
+  exec() {
+    const screenShoot = 'adb devices';
+    execCommand(screenShoot)
   }
   render() {
     return (
@@ -155,6 +167,7 @@ class App extends Component {
         <button onClick={this.readfile.bind(this)}>readfile</button>
         <button onClick={this.copyfile.bind(this)}>copyfile</button>
         <button onClick={this.newwin.bind(this)}>新窗口</button>
+        <button onClick={this.exec.bind(this)}>查看安卓</button>
         <Link to="/p" target="_blank">
           sss
         </Link>

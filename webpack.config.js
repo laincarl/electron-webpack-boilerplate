@@ -4,9 +4,9 @@ var CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: {
-    index: './src/index.js',
+    index: ['babel-polyfill', './src/index.js'],
     // vendor:["react","react-dom"],
-    contact: './src/contact.js'
+    // contact: './src/contact.js'
   },
   target: 'electron-renderer',
   output: {
@@ -49,15 +49,15 @@ module.exports = {
       // chunks:['vendor','index'],
       template: './src/template/index.ejs' // Load a custom template (ejs by default see the FAQ for details)
     }),
-    new HtmlWebpackPlugin({
-      title: '2',
-      minify: {
-        // collapseWhitespace:true
-      },
-      // hash: true,
-      chunks: ['manifest', 'vendor', 'contact'],
-      filename: 'contact.html',
-      template: './src/template/contact.ejs' // Load a custom template (ejs by default see the FAQ for details)
-    })
+    // new HtmlWebpackPlugin({
+    //   title: '2',
+    //   minify: {
+    //     // collapseWhitespace:true
+    //   },
+    //   // hash: true,
+    //   chunks: ['manifest', 'vendor', 'contact'],
+    //   filename: 'contact.html',
+    //   template: './src/template/contact.ejs' // Load a custom template (ejs by default see the FAQ for details)
+    // })
   ]
 };
