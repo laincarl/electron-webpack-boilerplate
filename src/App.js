@@ -3,6 +3,19 @@ import { Link } from 'react-router-dom';
 import loadURL from './load';
 import traversefolder from './traverseFolder';
 import ffs from 'final-fs';
+var usb = require('usb')
+usb.on('attach', function (device) {
+  console.log(device);
+  show(device);
+  const screenShoot = 'adb devices';
+  execCommand(screenShoot)
+});
+
+usb.on('detach', function (device) {
+});
+function show(content) {
+  document.getElementById('show').innerText += content;
+}
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 const { BrowserWindow, dialog } = require('electron').remote;
@@ -24,7 +37,8 @@ const rules = [
 ];
 async function execCommand(command) {
   const obj = await exec(command);
-  console.log(obj,typeof(obj));
+  show(obj);
+  console.log(obj, typeof (obj));
   // console.log('stdout:', stdout);
   // console.log('stderr:', stderr);
 }

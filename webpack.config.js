@@ -1,4 +1,6 @@
 var path = require('path');
+var fs = require('fs');
+var node_modules = fs.readdirSync('node_modules').filter(function (x) { return x !== '.bin' });
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 module.exports = {
@@ -59,5 +61,12 @@ module.exports = {
     //   filename: 'contact.html',
     //   template: './src/template/contact.ejs' // Load a custom template (ejs by default see the FAQ for details)
     // })
-  ]
+  ],
+  externals: function (context, request, cb) {
+    if (node_modules.indexOf(request) !== -1) {
+      cb(null, 'commonjs ' + request);
+      return;
+    }
+    cb();
+  }
 };
