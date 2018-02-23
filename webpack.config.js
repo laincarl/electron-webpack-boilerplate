@@ -13,8 +13,13 @@ module.exports = {
   target: 'electron-renderer',
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: '[name].[chunkHash:8].js'
+    filename: '[name].[chunkHash:8].js',
+    libraryTarget: 'commonjs2'
   },
+  node: {
+		__filename: true,
+		__dirname: true
+	},
   module: {
     rules: [
       {
@@ -25,7 +30,19 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
-      }
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg|ico)/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'img_[hash:8].[ext]',
+              outputPath: './app/assets/',
+            },
+          },
+        ],
+      },
     ]
   },
   devServer: {
@@ -69,4 +86,8 @@ module.exports = {
     }
     cb();
   }
+  // externals: {
+  //   opencv: 'opencv',
+  //   usb: 'usb'
+  // }
 };
