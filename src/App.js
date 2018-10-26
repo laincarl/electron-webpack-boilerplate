@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import {hot} from 'react-hot-loader';
 import loadURL from './load';
 import traversefolder from './traverseFolder';
 import ffs from 'final-fs';
@@ -183,7 +184,7 @@ class App extends Component {
         <button onClick={this.newwin.bind(this)}>新窗口</button>
         <button onClick={this.exec.bind(this)}>查看安卓</button>
         <Link to="/p" target="_blank">
-          sss
+          vvv
         </Link>
         <p id="show" />
         <span>{this.state.per}%</span>
@@ -192,4 +193,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default hot(module)(App);

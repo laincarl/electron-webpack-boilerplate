@@ -12,8 +12,9 @@ module.exports = {
   },
   target: 'electron-renderer',
   output: {
+    publicPath: '/', // 以保证资源路径正确。
     path: path.resolve(__dirname, 'build'),
-    filename: '[name].[chunkHash:8].js',
+    filename: '[name].[hash:8].js',
     libraryTarget: 'commonjs2'
   },
   node: {
