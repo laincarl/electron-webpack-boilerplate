@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const fs = require('fs');
 
-const devMode = process.env.NODE_ENV !== 'production';
 const ROOT_DIR = path.resolve(__dirname, '../');
 const node_modules = fs.readdirSync('node_modules').filter(x => x !== '.bin');
 module.exports = {
@@ -17,7 +16,7 @@ module.exports = {
   },
   target: 'electron-renderer',
   output: {
-    path: path.resolve(ROOT_DIR, 'dist'),
+    path: path.resolve(ROOT_DIR, 'build'),
     // publicPath: '/', // 以保证资源路径正确。
     filename: 'app/[name]_[hash:8].js',
     chunkFilename: 'app/chunks/[name].[chunkhash:5].chunk.js',
@@ -87,7 +86,8 @@ module.exports = {
         use: [{
           loader: 'babel-loader',
           // query: {
-          //   plugins: [['import', { libraryName: 'antd', style: true }]], // style: true 会加载 less 文件 style: 'css' 会加载 css 文件
+          //   plugins: [['import', { libraryName: 'antd', style: true }]], 
+          // style: true 会加载 less 文件 style: 'css' 会加载 css 文件
           // },
         },
         //  {
