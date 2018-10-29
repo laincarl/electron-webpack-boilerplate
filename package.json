@@ -11,7 +11,8 @@
         "clean": "rimraf ./build/*",
         "electron-pack": "build --win --x64",
         "preelectron-pack": "yarn build",
-        "dev": "concurrently \"yarn start\" \"wait-on http://localhost:3000 && electron .\""
+        "dev": "concurrently \"yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+        "ss":"electron ./electron.dev"
     },
     "author": "",
     "license": "ISC",
