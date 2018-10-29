@@ -121,7 +121,7 @@ module.exports = {
     ],
   },
   devServer: {
-    contentBase: path.resolve(ROOT_DIR, 'dist'),
+    // contentBase: path.resolve(ROOT_DIR, 'build'),//这一项不要填，否则electron 启动不起来
     compress: true,
     port: 3000,
     // host: '0.0.0.0', // 允许局域网通过ip访问

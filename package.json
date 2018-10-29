@@ -12,7 +12,7 @@
         "electron-pack": "build --win --x64",
         "preelectron-pack": "yarn build",
         "dev": "concurrently \"yarn start\" \"wait-on http://localhost:3000 && electron .\"",
-        "ss":"electron ./electron.dev"
+        "ss": "electron ./electron"
     },
     "author": "",
     "license": "ISC",
@@ -20,13 +20,13 @@
         "babel-core": "^6.26.0",
         "babel-eslint": "^10.0.1",
         "babel-loader": "^7.1.2",
-        "babel-plugin-transform-decorators-legacy": "^1.3.4",        
+        "babel-plugin-transform-decorators-legacy": "^1.3.4",
         "babel-preset-es2015": "^6.24.1",
         "babel-preset-react": "^6.24.1",
         "babel-preset-stage-1": "^6.24.1",
         "concurrently": "^3.5.0",
         "css-loader": "^0.28.5",
-        "electron": "^1.7.11",
+        "electron": "^3.0.6",
         "electron-builder": "^19.55.3",
         "electron-rebuild": "^1.7.3",
         "eslint": "^5.8.0",
@@ -37,7 +37,7 @@
         "eslint-plugin-react": "^7.11.1",
         "file-loader": "^1.1.9",
         "html-webpack-plugin": "^3.2.0",
-        "mini-css-extract-plugin": "^0.4.4",        
+        "mini-css-extract-plugin": "^0.4.4",
         "rimraf": "^2.6.1",
         "style-loader": "^0.18.2",
         "wait-on": "^2.0.2",
@@ -51,9 +51,9 @@
         "electron-is-dev": "^0.3.0",
         "react": "^16.6.0",
         "react-dom": "^16.6.0",
+        "react-hot-loader": "^4.1.2",
         "react-router": "^4.2.0",
         "react-router-dom": "^4.2.2",
-        "react-hot-loader": "^4.1.2",
         "usb": "^1.3.1"
     },
     "build": {
@@ -71,7 +71,7 @@
         },
         "nsis": {
             "oneClick": false,
-            "allowToChangeInstallationDirectory": true,           
+            "allowToChangeInstallationDirectory": true,
             "deleteAppDataOnUninstall": false
         }
     }
