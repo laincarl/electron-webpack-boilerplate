@@ -1,19 +1,20 @@
-const css=require('./index.css');
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import {
+  HashRouter as Router, Route, Switch, 
+} from 'react-router-dom';
 import App from './App';
 import Company from './Company';
-import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import './index.css';
 
 const PageSet = () => (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={ App } />
-        <Route path="/p" component={ Company } />
+  <Router>
+    <Switch>
+      <Route exact path="/" component={App} />
+      <Route path="/p" component={Company} />
 
-      </Switch>
-    </Router>
-  )
-ReactDOM.render(<PageSet/>, document.getElementById('root'));
+    </Switch>
+  </Router>
+);
+ReactDOM.render(<PageSet />, document.getElementById('root'));
