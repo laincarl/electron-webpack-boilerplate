@@ -184,7 +184,7 @@ class App extends Component {
         <button onClick={this.newwin.bind(this)}>新窗口</button>
         <button onClick={this.exec.bind(this)}>查看安卓</button>
         <Link to="/p" target="_blank">
-          vvv
+          vvva
         </Link>
         <p id="show" />
         <span>{this.state.per}%</span>
