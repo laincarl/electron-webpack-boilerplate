@@ -72,6 +72,7 @@ module.exports = {
   resolve: {
     modules: [path.resolve(ROOT_DIR, 'node_modules')], // 优化webpack文件搜索范围
     extensions: ['.js', '.json', '.jsx', '.ts', '.tsx', '.less'],
+    mainFields: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main'],
     alias: {},
   },
   module: {
@@ -179,4 +180,5 @@ module.exports = {
     }
     cb();
   },
+  // externals: Object.keys({ usb: 'usb' }),
 };

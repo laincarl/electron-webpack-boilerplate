@@ -26,7 +26,8 @@
                 "allowBind": true
             }
         ],
-        "react/prefer-stateless-function": ["off",
+        "react/prefer-stateless-function": [
+            "off",
             {
                 "ignorePureComponents": true
             }
@@ -63,7 +64,8 @@
                     "invalidHref"
                 ]
             }
-        ]
+        ],
+        "no-unused-vars": "warn"
     },
     "globals": {}
 }
