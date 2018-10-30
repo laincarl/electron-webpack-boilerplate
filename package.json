@@ -4,7 +4,7 @@
     "description": "",
     "main": "main.js",
     "scripts": {
-        "//postinstall": "./node_modules/.bin/electron-rebuild --parallel --force --types prod,dev,optional --module-dir .",
+        "postinstall": "./node_modules/.bin/electron-rebuild --parallel --force --types prod,dev,optional --module-dir .",
         "start-server": "webpack-dev-server --hot --config ./webpack/webpack.config.js",
         "start": "concurrently \"electron .\"",
         "dev": "concurrently \"npm run start-server\" \"wait-on http://localhost:3000 && electron .\"",
